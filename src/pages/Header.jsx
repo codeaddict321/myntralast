@@ -1,6 +1,8 @@
 import React from "react";
 import Cart from "../assets/cart.png"
 import logo from "../assets/logo.png"
+import Sorting from "../components/Sorting";
+import { Link } from "react-router-dom";
 // import Searchbar from "./Components/Searchbar.jsx";
 // import CartLogo from './Components/CartLogo.jsx';
 import SearchBar from "../components/SearchBar";
@@ -19,12 +21,15 @@ export default function Header({search,setSearch}){
                             <li><a href="/">KID</a></li>
                         </ul>
                     </div>
+             
                 </div>
                 <SearchBar search={search} setSearch={setSearch} />
                 {/* <Searchbar/>
                 <CartLogo/> */}
               <div className="cart__container">
-              <img src={Cart} alt="" />
+            <Link to={"/cart"}>
+            <img src={Cart} alt="" />
+            </Link>  
                 </div> 
             </nav>
         </header>

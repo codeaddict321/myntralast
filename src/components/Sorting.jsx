@@ -1,25 +1,25 @@
-import data from "../data"
+import data from '../data';
 import { useState } from 'react'
 
-const Product = () => {
+const Sorting = ({items,setItems}) => {
 
-    const [productData, setProductData] = useState(data)
+    // const [productData, setItems] = useState(items)
 
     const handleChange = (e) => {
 
         if (e.target.value == "What-new") {
-            setProductData(data)
+            setItems(data)
         }
 
         if (e.target.value == "price-low-to-high") {
-            setProductData(() => {
-                return [...data].sort((a, b) => (a.finalPrice - b.finalPrice))
+            setItems(() => {
+                return [...items].sort((a, b) => (a.finalPrice - b.finalPrice))
             })
            
         }
         if (e.target.value == "better-discounts") {
-            setProductData(() => {
-                return [...data].sort((a, b) => (b.discount - a.discount))
+            setItems(() => {
+                return [...items].sort((a, b) => (b.discount - a.discount))
             })
         }
 
@@ -42,4 +42,4 @@ const Product = () => {
             )
             }
 
-            export default Product;
+            export default Sorting;

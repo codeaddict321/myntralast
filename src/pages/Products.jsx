@@ -5,18 +5,14 @@ import Sorting from "../components/Sorting"
 
 
 export default function Products({items,setItems,search}){
-    let id = 0
-    const newData = data.map(el=>{
-        return {...el,id:id++}
-    })
-    console.log(newData);
+ 
 
   return (
 <>
-    <Sorting />
+    <Sorting items={items}setItems={setItems}  />
     <section className="products">
         <div className="filter__container">
-            <FilterPage />
+            <FilterPage  items={items} setItems={setItems}/>
         </div>
            <ul className="products__container">
             {items.map((item)=>{
@@ -30,9 +26,12 @@ export default function Products({items,setItems,search}){
             <p className="item__desc">
                 {item.description}
             </p>
-            <p className="item__price">
-               <span>RS</span> {item.finalPrice}
-            </p>
+            <div className="item__price">
+             
+               <p>Rs.{item.finalPrice}</p>
+              <p style={{ textDecoration: "line-through" }}>Rs.{item.strickPrice}</p>
+              <strong style={{ color: "red" }}>{item.discount} %OFF</strong>
+            </div>
                 </Link>
            </li>
                } else if(item.name.toLowerCase().includes(search)){
@@ -48,7 +47,7 @@ export default function Products({items,setItems,search}){
             <p className="item__price">
             finalPrice={item.finalPrice} 
                             strickPrice={item.strickPrice}
-                            discount={item.discount} id={id}
+                            discount={item.discount} id={item.id}
             </p>
                 </Link>
           
