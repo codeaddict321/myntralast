@@ -1,6 +1,8 @@
 import data from "../data";
 import { Link } from "react-router-dom";
 import FilterPage from "../components/FilterPage";
+import Sorting from "../components/Sorting"
+
 
 export default function Products({items,setItems,search}){
     let id = 0
@@ -10,10 +12,8 @@ export default function Products({items,setItems,search}){
     console.log(newData);
 
   return (
-    
-    
-
-
+<>
+    <Sorting />
     <section className="products">
         <div className="filter__container">
             <FilterPage />
@@ -34,8 +34,6 @@ export default function Products({items,setItems,search}){
                <span>RS</span> {item.finalPrice}
             </p>
                 </Link>
-          
-        
            </li>
                } else if(item.name.toLowerCase().includes(search)){
                 return <li key={item.id} data-id={item.id}className="product">
@@ -48,22 +46,20 @@ export default function Products({items,setItems,search}){
                 {item.description}
             </p>
             <p className="item__price">
-               <span>RS</span> {item.finalPrice}
+            finalPrice={item.finalPrice} 
+                            strickPrice={item.strickPrice}
+                            discount={item.discount} id={id}
             </p>
                 </Link>
           
         
            </li>
                }
-                  
-                
-              
-                  
-
             })}
            
            </ul>
     </section>
+    </>
     
   )
 }
