@@ -1,46 +1,51 @@
 // import React, { useState } from 'react';
 // import Card from "./Card.jsx";
 // import './ComponentStyles/FilterPage.css';
-// import data from "../data.js";
+import data from "../data.js";
 
 
-const FilterPage = (props) => {
+const FilterPage = ({items,setItems}) => {
 
     //taking variables for data of different category
     // const [newData, setNewData] = useState(data);
 
     // //function to get data of gender category
-    // const genderCategory = (e) => {
-    //     if (e.target.value === "all") {
-    //         document.getElementById("product-category").querySelector("input").checked = false
-    //         document.getElementById("product-category").querySelectorAll("input")[1].checked = false
-    //         setNewData(data);
-    //     } else {
-    //         setNewData(data.filter((ele) => {
-    //             return ele.gender === e.target.value;
-    //         }))
-    //     }
-    // }
+    const genderCategory = (e) => {
+        
+        if (e.target.value === "all") {
+             setItems(data)
+        } else{
+        
+                    setItems(data.filter((ele) => {
+                        return ele.gender === e.target.value;
+                    }))
+        
+        
+                }
+        
+    }
 
     // //function to get data of different style category
-    // const typeCategory = (e) => {
-    //     if (e.target.checked === false) {
-    //         if (e.target.value === "folded") {
-    //             setNewData(newData.filter((ele) => {
-    //                 return ele.folded === "Y";
-    //             }));
-    //         }
-    //         else if (e.target.value === "white") {
-    //             setNewData(newData.filter((ele) => {
-    //                 return ele.link.includes(e.target.value);
-    //             }))
-    //         }
-    //     }
-    //     else {
-    //         document.getElementById("gender-category").querySelector("input").checked = true;
-    //         setNewData(data);
-    //     }
-    // }
+    const typeCategory = (e) => {
+        if (e.target.checked === false) {
+            if (e.target.value === "folded") {
+                setItems(items.filter((ele) => {
+                    return ele.folded === "Y";
+                }));
+            }
+            else if (e.target.value === "white") {
+                setItems(items.filter((ele) => {
+                    return ele.link.includes(e.target.value);
+                }))
+            }
+        }
+        else {
+            document.getElementById("gender-category").querySelector("input").checked = true;
+            setItems(data);
+        }
+      
+
+    }
 
     return (
         <>
@@ -53,7 +58,7 @@ const FilterPage = (props) => {
                             type="radio"
                             name="gender"
                             value="all"
-                            // onClick={genderCategory}
+                            onClick={genderCategory}
                         />
                         <label>ALL</label>
                         <br />
@@ -61,7 +66,7 @@ const FilterPage = (props) => {
                             type="radio"
                             name="gender"
                             value="M"
-                            // onClick={genderCategory}
+                            onClick={genderCategory}
                         />
                         <label>MEN</label>
                         <br />
@@ -69,7 +74,7 @@ const FilterPage = (props) => {
                             type="radio"
                             name="gender"
                             value="F"
-                            // onClick={genderCategory}
+                            onClick={genderCategory}
                         />
                         <label>WOMEN</label>
                     </div>
@@ -78,7 +83,7 @@ const FilterPage = (props) => {
                         <input
                             type="checkbox"
                             value="white"
-                            // onMouseUp={typeCategory}
+                            onMouseUp={typeCategory}
                         />
                         <label>White</label>
                         <br />
@@ -86,7 +91,7 @@ const FilterPage = (props) => {
                             type="checkbox"
                             name="FoldedSleeve"
                             value="folded"
-                            // onMouseUp={typeCategory}
+                            onMouseUp={typeCategory}
                         />
                         <label>Folded Sleeve</label>
                     </div>

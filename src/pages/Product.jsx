@@ -5,8 +5,8 @@ import data from "../data";
 export default function Product(){
  const {id} = useParams()
 const clickedItem = data.find(item=>item.id === Number(id))
-function addToCart(){
-    console.log("hi");
+function handleCart(){
+  
 }
  
 
